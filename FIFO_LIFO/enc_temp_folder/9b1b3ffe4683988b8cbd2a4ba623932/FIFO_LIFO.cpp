@@ -4,7 +4,6 @@
 #include <iostream>
 using namespace std;
 
-//this class contains the methods and variables to use the fifo & lifo structure
 class fifo_lifo
 {
 
@@ -20,7 +19,7 @@ private:
 	int array[20], marker, number;
 };
 
-//builder of the class that fills the array with 0's
+
 fifo_lifo::fifo_lifo(int initiate)
 {
 	fifo_lifo::marker = 0;
@@ -30,7 +29,6 @@ fifo_lifo::fifo_lifo(int initiate)
 	}
 
 }
-//distroyer of the class that fills  again the array's spaces with 0's (only the used ones)
 fifo_lifo::~fifo_lifo()
 {
 	for (int i = 0; i < marker; i++) {
@@ -40,7 +38,7 @@ fifo_lifo::~fifo_lifo()
 }
 
 
-//The method insert adds 1 element to the array and if the array is full, gives a message
+
 void fifo_lifo::insert() {
 	if (marker > 19) {
 		cout << "El arreglo esta lleno" << endl;
@@ -49,12 +47,11 @@ void fifo_lifo::insert() {
 		cout << "ingresa el numero a insertar" << endl;
 		cin >> number;
 		array[marker] = number;
-		//marker will grow through the execution of the program
-		marker++; 
+		marker++;
 	}
 }
 
-//the method show prints the array, and if the array is empty, sends a message
+
 void fifo_lifo::show() {
 	if (marker > 0) {
 		
@@ -67,10 +64,8 @@ void fifo_lifo::show() {
 	{
 		cout << "El arreglo esta vacio" << endl;
 	}
-	
-}
 
-//fifo structure makes the array move to a new position where the first element is deleted
+}
 void fifo_lifo::fifo() {
 	if (marker < 1) {
 		cout << "El arreglo esta vacio" << endl;
@@ -80,13 +75,10 @@ void fifo_lifo::fifo() {
 		for (int i = 0; i < marker; i++) {
 			array[i] = array[i + 1];
 		}
-		//marker is less because the number of elements in the array decrease
 		marker--;
 	}
 
 }
-
-//lifo just takes the last element and change it for 0
 void fifo_lifo::lifo() {
 	if (marker < 1) {
 		cout << "El arreglo esta vacio" << endl;
@@ -100,12 +92,10 @@ void fifo_lifo::lifo() {
 
 int main() {
 
-	//we must invocate our object out of the loop in order to save the content of the variable marker
+
     fifo_lifo object(0);
 	int option;
 	bool initiate = true;
-
-	//infinite loop to always send the menu
 	while (1 == 1) {
 		system("cls");
 		cout << "1. Insertar\n2. Eliminar(FIFO)\n3. Eliminar (LIFO)\n4. Mostrar\n5. Salir\n";
@@ -124,8 +114,6 @@ int main() {
 		case 2:
 		{
 			object.fifo();
-			system("pause");
-
 		}
 
 			break;
@@ -133,8 +121,6 @@ int main() {
 		case 3: {
 
 			object.lifo();
-			system("pause");
-
 		}
 
 			break;
