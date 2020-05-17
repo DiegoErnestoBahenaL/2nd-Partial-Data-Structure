@@ -9,7 +9,7 @@ class fifo_lifo
 {
 
 public:
-	fifo_lifo(int);
+	 fifo_lifo();
 	~fifo_lifo();
 	void fifo();
 	void  lifo();
@@ -17,91 +17,72 @@ public:
 	void show();
 
 private:
-	int array[20], marker, number;
+	char name[30];
+	int age;
+
 };
 
-//builder of the class that fills the array with 0's
-fifo_lifo::fifo_lifo(int initiate)
-{
-	fifo_lifo::marker = 0;
-	for (int i = 0; i < 20; i++)
-	{
-		fifo_lifo::array[i] = 0;
-	}
 
-}
+//structure out of the class "Person" contains name, age and the pointer
+
+struct Person {
+
+	char name[30];
+	int age;
+	Person* Next;
+
+};
+
+
+
+
+
+
+
+
+
+
 //distroyer of the class that fills  again the array's spaces with 0's (only the used ones)
 fifo_lifo::~fifo_lifo()
 {
-	for (int i = 0; i < marker; i++) {
-		array[i] = 0;
-	}
-	cout << "objeto destruido" << endl;
+	
 }
 
 
 //The method insert adds 1 element to the array and if the array is full, gives a message
 void fifo_lifo::insert() {
-	if (marker > 19) {
-		cout << "El arreglo esta lleno" << endl;
-	}
-	else {
-		cout << "ingresa el numero a insertar" << endl;
-		cin >> number;
-		array[marker] = number;
-		//marker will grow through the execution of the program
-		marker++; 
-	}
+	
+	
+		
+	
 }
 
 //the method show prints the array, and if the array is empty, sends a message
 void fifo_lifo::show() {
-	if (marker > 0) {
-		
-		for (int i = 0; i < marker; i++) {
-			cout  << array[i] ;
-		}
-		cout << "\n";
-	}
-	else
-	{
-		cout << "El arreglo esta vacio" << endl;
-	}
-	
+	cout << "Ingrese el nombre" << endl;
+	cin.ignore();
+	cin.getline(name, 30, '\n');
+	cout << "Ingresa la edad" << endl;
+	cin >> age;
 }
 
-//fifo structure makes the array move to a new position where the first element is deleted
 void fifo_lifo::fifo() {
-	if (marker < 1) {
-		cout << "El arreglo esta vacio" << endl;
-	}
-	else
-	{
-		for (int i = 0; i < marker; i++) {
-			array[i] = array[i + 1];
-		}
-		//marker is less because the number of elements in the array decrease
-		marker--;
-	}
+
 
 }
 
-//lifo just takes the last element and change it for 0
+
 void fifo_lifo::lifo() {
-	if (marker < 1) {
-		cout << "El arreglo esta vacio" << endl;
-	}
-	else
-	{
-		array[marker] = 0;
-		marker--;
-	}
+
+
+
+
 }
 
 int main() {
 
 	//we must invocate our object out of the loop in order to save the content of the variable marker
-    fifo_lifo object(0);
+    fifo_lifo object;
 	int option;
 	bool initiate = true;
 
